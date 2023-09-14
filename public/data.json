@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "img": "https://i.ibb.co/tBtHm5x/Rectangle-2.png",
+      "course_name": "Introduction to Programming",
+      "description": "Learn the basics of programming with this introductory course.",
+      "price": 49.99,
+      "credit": 3
+    },
+    {
+      "id": 2,
+      "img": "https://i.ibb.co/wN6FCbq/Rectangle-2-1.png",
+      "course_name": "Web Development Fundamentals",
+      "description": "Get started with web development and HTML, CSS, and JavaScript.",
+      "price": 59.99,
+      "credit": 4
+    },
+    {
+      "id": 3,
+      "img": "https://i.ibb.co/FKbjmsq/Rectangle-2-2.png",
+      "course_name": "Data Science Essentials",
+      "description": "Explore the world of data science and analytics.",
+      "price": 79.99,
+      "credit": 5
+    },
+    {
+      "id": 4,
+      "img": "https://i.ibb.co/WHxqwWj/Rectangle-2-3.png",
+      "course_name": "Mobile App Development",
+      "description": "Build your own mobile apps for iOS and Android.",
+      "price": 69.99,
+      "credit": 4
+    },
+    {
+      "id": 5,
+      "img": "https://i.ibb.co/Z8vXw53/Rectangle-2-4.png",
+      "course_name": "Machine Learning Basics",
+      "description": "Dive into the fundamentals of machine learning and AI.",
+      "price": 89.99,
+      "credit": 5
+    },
+    {
+      "id": 6,
+      "img": "https://i.ibb.co/1mvSzF0/Rectangle-2-5.png",
+      "course_name": "Graphic Design Fundamentals",
+      "description": "Learn the principles of graphic design and digital art.",
+      "price": 54.99,
+      "credit": 3
+    },
+    {
+      "id": 7,
+      "img": "https://i.ibb.co/nL03r0j/Rectangle-2-6.png",
+      "course_name": "Business Management 101",
+      "description": "Get a solid foundation in business management and leadership.",
+      "price": 49.99,
+      "credit": 3
+    },
+    {
+      "id": 8,
+      "img": "https://i.ibb.co/LvQChQs/Rectangle-3.png",
+      "course_name": "Photography Masterclass",
+      "description": "Enhance your photography skills with this comprehensive course.",
+      "price": 69.99,
+      "credit": 4
+    },
+    {
+      "id": 9,
+      "img": "https://i.ibb.co/ygSTb1Q/Rectangle-3-1.png",
+      "course_name": "Digital Marketing Strategies",
+      "description": "Learn effective digital marketing techniques and strategies.",
+      "price": 59.99,
+      "credit": 4
+    }
+  ]
+  
