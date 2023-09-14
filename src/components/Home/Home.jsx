@@ -1,10 +1,16 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useEffect } from "react";
 
 import './Home.css'
+import Cart from "../Cart/Cart";
 const Home = () => {
     const [allCard,setAllCard] = useState([])
+    const [selectedCard,setSelectedCard] = useState([])
+    const [count,setCount] = useState((0))
+    const [remaining,setRemaining] = useState(0)
+    console.log(remaining)
 
     useEffect( () => {
         fetch('data.json')
@@ -12,11 +18,36 @@ const Home = () => {
         .then(data => setAllCard(data))
 
     },[])
-    console.log(allCard)
+
+    const handleSelectedCard = (card) => {
+        const isExist = selectedCard.find(item => item.id == card.id)
+        let count = card.credit;
+        if(isExist){
+            alert('already booked')
+        }
+        else{
+        selectedCard.forEach((item) => {
+            count = count + item.credit
+
+        });
+        const totalRemaining = 20 - count
+
+        if(remaining < 0 ){
+           return alert('your time is up')
+        }
+        else{
+        setRemaining(totalRemaining)
+        setCount(count)
+        const newSelectedCard = [...selectedCard,card]
+        setSelectedCard(newSelectedCard)
+        }
+        }   
+    }
+   
     return (
-       <div className="container">
+       <div className="">
         <h1 className="text-center">Course Registration</h1>
-        <div className="home-container flex">
+        <div className="home-container flex gap-4">
             <div className="card-container">
             
 
@@ -24,19 +55,19 @@ const Home = () => {
             allCard.map((card) =>(
                 <div className="card p-3 bg-white rounded-md shadow-lg">
                 <div className="card-img">
-                    <img src="https://i.ibb.co/tBtHm5x/Rectangle-2.png" alt="" />
+                    <img src={card.img} alt="" />
 
                 </div>
-                <h2>anik</h2>
+                <h2>{card.course_name}</h2>
                 <p>
-                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, praesentium.</small>
+                    <small>{card.description}</small>
                 </p>
                 <div className="info flex justify-between">
-                    <p>salary:2500</p>
-                    <p>creadit</p>
+                    <p>$ Salary : {card.price}</p>
+                    <p>Credit : {card.credit} hr</p>
 
                 </div>
-                <button className="bg-sky-600 w-full">selected</button>
+                <button className="bg-sky-600 w-full rounded text-white" onClick={()=>handleSelectedCard(card)}>selected</button>
                 
             </div>
 
@@ -44,8 +75,8 @@ const Home = () => {
 
             </div>
 
-            <div className="cart">
-                <h1>data</h1>
+            <div className="cart p-6 bg-white rounded-lg">
+                <Cart key={selectedCard.id} selectedCard={selectedCard} count={count} remaining={remaining}></Cart>
 
             </div>
 
