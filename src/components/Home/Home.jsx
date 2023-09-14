@@ -2,14 +2,16 @@
 /* eslint-disable react/jsx-key */
 import { useState } from "react";
 import { useEffect } from "react";
+import { FaBookOpen } from 'react-icons/fa';
 
 import './Home.css'
 import Cart from "../Cart/Cart";
 const Home = () => {
     const [allCard,setAllCard] = useState([])
     const [selectedCard,setSelectedCard] = useState([])
-    const [count,setCount] = useState((0))
-    const [remaining,setRemaining] = useState(0)
+    const [count,setCount] = useState(0)
+    const [remaining,setRemaining] = useState()
+    const [totalPrice,setTotalPrice] = useState()
     console.log(remaining)
 
     useEffect( () => {
@@ -22,20 +24,25 @@ const Home = () => {
     const handleSelectedCard = (card) => {
         const isExist = selectedCard.find(item => item.id == card.id)
         let count = card.credit;
+        let totalPrice = card.price;
+        
+
         if(isExist){
             alert('already booked')
         }
         else{
         selectedCard.forEach((item) => {
             count = count + item.credit
+            totalPrice = totalPrice + item.price
 
         });
         const totalRemaining = 20 - count
 
-        if(remaining < 0 ){
+        if(totalRemaining < 0 ){
            return alert('your time is up')
         }
         else{
+        setTotalPrice(totalPrice)
         setRemaining(totalRemaining)
         setCount(count)
         const newSelectedCard = [...selectedCard,card]
@@ -62,12 +69,13 @@ const Home = () => {
                 <p>
                     <small>{card.description}</small>
                 </p>
-                <div className="info flex justify-between">
+                <div className="flex items-center">
                     <p>$ Salary : {card.price}</p>
-                    <p>Credit : {card.credit} hr</p>
+                  <p>Credit : {card.credit} hr</p>
+                  
 
                 </div>
-                <button className="bg-sky-600 w-full rounded text-white" onClick={()=>handleSelectedCard(card)}>selected</button>
+                <button className="bg-sky-600 w-full rounded text-white" onClick={()=>handleSelectedCard(card)}>select</button>
                 
             </div>
 
@@ -76,7 +84,7 @@ const Home = () => {
             </div>
 
             <div className="cart p-6 bg-white rounded-lg">
-                <Cart key={selectedCard.id} selectedCard={selectedCard} count={count} remaining={remaining}></Cart>
+                <Cart key={selectedCard.id} selectedCard={selectedCard} count={count} remaining={remaining} totalPrice={totalPrice}></Cart>
 
             </div>
 
