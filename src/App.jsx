@@ -1,12 +1,15 @@
 
 import './App.css'
+import Home from './components/Home/Home'
 
 function App() {
   
 
   return (
     <>
-      <h1 className='bg-slate-700'>registration</h1>
+      <div className='w-11/12 mx-auto my-8'>
+      <Home></Home>
+      </div>
     </>
   )
 }
