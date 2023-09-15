@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { FaBookOpen } from 'react-icons/fa';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './Home.css'
 import Cart from "../Cart/Cart";
 const Home = () => {
@@ -28,7 +31,7 @@ const Home = () => {
         
 
         if(isExist){
-            alert('already booked')
+            toast.warning('already booked')
         }
         else{
         selectedCard.forEach((item) => {
@@ -53,7 +56,7 @@ const Home = () => {
    
     return (
        <div className="">
-        <h1 className="text-center">Course Registration</h1>
+        <h1 className="text-center text-3xl font-bold mb-10">Course Registration</h1>
         <div className="home-container flex gap-4">
             <div className="card-container">
             
@@ -65,17 +68,23 @@ const Home = () => {
                     <img src={card.img} alt="" />
 
                 </div>
-                <h2>{card.course_name}</h2>
+                <h2 className="my-4 text-lg font-semibold">{card.course_name}</h2>
                 <p>
-                    <small>{card.description}</small>
+                    <small className="font-normal text-sm text-gray-500">{card.description}</small>
                 </p>
-                <div className="flex items-center">
-                    <p>$ Salary : {card.price}</p>
-                  <p>Credit : {card.credit} hr</p>
+                <div className="flex my-5 justify-between">
+                    <div>
+                        <p>$ Salary : {card.price}</p>
+                    </div>
+                  <div className="flex gap-1">
+                   <FaBookOpen size={22}></FaBookOpen>
+                    <p>Credit : {card.credit} hr</p>
+                    </div>
                   
 
                 </div>
-                <button className="bg-sky-600 w-full rounded text-white" onClick={()=>handleSelectedCard(card)}>select</button>
+                <button className="bg-sky-600 w-full rounded text-white py-2 text-lg font-semibold" onClick={()=>handleSelectedCard(card)}>select</button>
+                <ToastContainer></ToastContainer>
                 
             </div>
 
