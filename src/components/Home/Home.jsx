@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { FaBookOpen } from 'react-icons/fa';
+import {BiDollar} from 'react-icons/bi';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -42,7 +43,7 @@ const Home = () => {
         const totalRemaining = 20 - count
 
         if(totalRemaining < 0 ){
-           return alert('your time is up')
+           return toast.warning('your time is up')
         }
         else{
         setTotalPrice(totalPrice)
@@ -74,10 +75,13 @@ const Home = () => {
                 </p>
                 <div className="flex my-5 justify-between">
                     <div>
-                        <p>$ Salary : {card.price}</p>
+                        <div className="flex items-center">
+                            <BiDollar size={20}></BiDollar>
+                            <p> Salary : {card.price}</p>
+                        </div>
                     </div>
-                  <div className="flex gap-1">
-                   <FaBookOpen size={22}></FaBookOpen>
+                  <div className="flex gap-2 items-center">
+                   <FaBookOpen size={18}></FaBookOpen>
                     <p>Credit : {card.credit} hr</p>
                     </div>
                   
